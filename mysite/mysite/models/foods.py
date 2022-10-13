@@ -6,5 +6,5 @@ class Foods(models.Model):
     name = models.CharField(max_length=50)
     energy_kcal = models.IntegerField()
     proteins_g = models.FloatField()
-    carbohydrates_g = models.FloatField()
     lipids_g = models.FloatField()
+    carbohydrates_g = models.FloatField()
