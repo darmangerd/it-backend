@@ -1,0 +1,24 @@
+[
+    {
+        "model": "it.food",
+        "pk": 1,
+        "fields": {
+            "name": "pizza",
+            "energy_kcal": 350,
+            "proteins_g": 3,
+            "lipids_g": 30,
+            "carbohydrates_g": 20
+        }
+    },
+    {
+        "model": "it.food",
+        "pk": 2,
+        "fields": {
+            "name": "apple",
+            "energy_kcal": 80,
+            "proteins_g": 2,
+            "lipids_g": 2,
+            "carbohydrates_g": 10
+        }
+    }
+]
