@@ -1,2 +1,18 @@
 [
+    {
+        "model": "it.meal",
+        "pk": 1,
+        "fields": {
+            "date": "2020-02-01",
+            "id_user": 1
+        }
+    },
+    {
+        "model": "it.meal",
+        "pk": 2,
+        "fields": {
+            "date": "2019-01-01",
+            "id_user": 2
+        }
+    }
 ]
