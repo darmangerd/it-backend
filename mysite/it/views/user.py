@@ -9,7 +9,7 @@ from knox.views import LoginView as KnoxLoginView
 
 from ..serializers import UserSerializer
 
-# from drf_yasg.utils import swagger_auto_schema
+from drf_yasg.utils import swagger_auto_schema
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -24,11 +24,15 @@ class UserViewSet(viewsets.ModelViewSet):
 
 
 class LoginView(KnoxLoginView):
+    """
+    API endpoint allowing the user to login and receive a token
+    """
+
     permission_classes = [
         permissions.AllowAny,
     ]
 
-    #    @swagger_auto_schema(request_body=AuthTokenSerializer)
+    @swagger_auto_schema(request_body=AuthTokenSerializer)
     def post(self, request, format=None):
         serializer = AuthTokenSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)

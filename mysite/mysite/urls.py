@@ -14,10 +14,12 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import path, include, re_path
 
 from knox import views as knox_views
 from it.views import LoginView
+
+from .swagger import schema_view
 
 urlpatterns = []
 
@@ -28,4 +30,21 @@ urlpatterns = [
     path(r"auth/login/", LoginView.as_view(), name="knox_login"),
     path(r"auth/logout/", knox_views.LogoutView.as_view(), name="knox_logout"),
     path(r"auth/logoutall/", knox_views.LogoutAllView.as_view(), name="knox_logoutall"),
+]
+
+# Documentation
+urlpatterns += [
+    re_path(
+        r"^swagger(?P<format>\.json|\.yaml)$",
+        schema_view.without_ui(cache_timeout=0),
+        name="schema-json",
+    ),
+    re_path(
+        r"^swagger/$",
+        schema_view.with_ui("swagger", cache_timeout=0),
+        name="schema-swagger-ui",
+    ),
+    re_path(
+        r"^redoc/$", schema_view.with_ui("redoc", cache_timeout=0), name="schema-redoc"
+    ),
 ]
