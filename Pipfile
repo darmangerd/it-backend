@@ -11,6 +11,7 @@ django-rest-knox = "*"
 [dev-packages]
 black = "*"
 drf-yasg = "*"
+sphinx = "*"
 
 [requires]
 python_version = "3.10"
