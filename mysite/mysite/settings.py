@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "it.apps.ItConfig",
     "rest_framework",
+    "knox",
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,8 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
+
+REST_FRAMEWORK = {"DEFAULT_AUTHENTICATION_CLASSES": ["knox.auth.TokenAuthentication"]}
 
 ROOT_URLCONF = "mysite.urls"
 

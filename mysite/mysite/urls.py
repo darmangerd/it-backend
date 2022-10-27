@@ -16,7 +16,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from knox import views as knox_views
+from it.views import LoginView
+
+urlpatterns = []
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path(r"it/", include("it.urls")),
+    # Authentication
+    path(r"auth/login/", LoginView.as_view(), name="knox_login"),
+    path(r"auth/logout/", knox_views.LogoutView.as_view(), name="knox_logout"),
+    path(r"auth/logoutall/", knox_views.LogoutAllView.as_view(), name="knox_logoutall"),
 ]
