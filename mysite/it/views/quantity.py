@@ -12,5 +12,5 @@ class QuantityViewSet(viewsets.ModelViewSet):
 
     queryset = Quantity.objects.all()
     serializer_class = QuantitySerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.IsAuthenticated | permissions.IsAdminUser]
     swagger_tag = ["Quantity"]

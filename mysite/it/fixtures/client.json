@@ -3,7 +3,7 @@
         "model": "it.client",
         "pk": 1,
         "fields": {
-            "user": 1,
+            "id_user": 1,
             "weight_kg": 80,
             "height_cm": 180,
             "gender": "m"
@@ -13,10 +13,20 @@
         "model": "it.client",
         "pk": 2,
         "fields": {
-            "user": 2,
+            "id_user": 2,
             "weight_kg": 65,
             "height_cm": 165,
             "gender": "f"
+        }
+    },
+    {
+        "model": "it.client",
+        "pk": 3,
+        "fields": {
+            "id_user": 3,
+            "weight_kg": 63,
+            "height_cm": 168,
+            "gender": "m"
         }
     }
 ]

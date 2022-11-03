@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 
 class Client(models.Model):
-    user = models.OneToOneField(
+    id_user = models.OneToOneField(
         User,
         on_delete=models.CASCADE,
     )

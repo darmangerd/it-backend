@@ -1,20 +1,29 @@
 [
-    {
-        "model": "it.quantity",
-        "pk": 1,
-        "fields": {
-            "gram": 250,
-            "id_food": 1,
-            "id_meal": 1
-        }
-    },
-    {
-        "model": "it.quantity",
-        "pk": 2,
-        "fields": {
-            "gram": 80,
-            "id_food": 2,
-            "id_meal": 2
-        }
+{
+    "model": "it.quantity",
+    "pk": 1,
+    "fields": {
+        "gram": 250,
+        "id_food": 1,
+        "id_meal": 1
     }
+},
+{
+    "model": "it.quantity",
+    "pk": 2,
+    "fields": {
+        "gram": 80,
+        "id_food": 2,
+        "id_meal": 2
+    }
+},
+{
+    "model": "it.quantity",
+    "pk": 3,
+    "fields": {
+        "gram": 11,
+        "id_food": 2,
+        "id_meal": 3
+    }
+}
 ]

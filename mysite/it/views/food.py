@@ -3,6 +3,7 @@ from rest_framework import permissions
 
 from ..models import Food
 from ..serializers import FoodSerializer
+from ..permissions import IsOwner, IsStaffOrReadOnly
 
 
 class FoodViewSet(viewsets.ModelViewSet):
@@ -13,4 +14,5 @@ class FoodViewSet(viewsets.ModelViewSet):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
     permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated, IsOwner | IsStaffOrReadOnly]
     swagger_tag = ["Food"]
