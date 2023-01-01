@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "it.apps.ItConfig",
+    # CORS
+    "corsheaders",
     "rest_framework",
     "knox",
     # Documentation
@@ -45,6 +47,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    # CORS
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -141,3 +145,10 @@ SWAGGER_SETTINGS = {
     },
     "DEFAULT_AUTO_SCHEMA_CLASS": "mysite.swagger.CustomAutoSchema",
 }
+
+# CORS Setttings
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://127.0.0.1:8000/",
+]
