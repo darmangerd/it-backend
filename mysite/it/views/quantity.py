@@ -14,3 +14,9 @@ class QuantityViewSet(viewsets.ModelViewSet):
     serializer_class = QuantitySerializer
     permission_classes = [permissions.IsAuthenticated]
     swagger_tag = ["Quantity"]
+
+    def get_queryset(self):
+        id_meal = self.request.query_params.get("id_meal")
+        if id_meal:
+            return Quantity.objects.filter(id_meal=id_meal)
+        return Quantity.objects.all()

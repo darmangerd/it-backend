@@ -14,3 +14,12 @@ class MealViewSet(viewsets.ModelViewSet):
     serializer_class = MealSerializer
     permission_classes = [permissions.IsAuthenticated]
     swagger_tag = ["Meal"]
+
+    def get_queryset(self):
+        user_id = self.request.query_params.get("id")
+        date = self.request.query_params.get("date")
+        if user_id and date:
+            return Meal.objects.filter(id_user=user_id, date=date)
+        if user_id:
+            return Meal.objects.filter(id_user=user_id)
+        return Meal.objects.all()

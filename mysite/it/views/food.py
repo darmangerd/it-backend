@@ -16,3 +16,11 @@ class FoodViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated]
     # permission_classes = [permissions.IsAuthenticated, IsOwner | IsStaffOrReadOnly]
     swagger_tag = ["Food"]
+
+    def get_queryset(self):
+        food_id = self.request.query_params.getlist("id")
+        print("ICI")
+        print(food_id)
+        if food_id:
+            return Food.objects.filter(id__in=food_id)
+        return Food.objects.all()
