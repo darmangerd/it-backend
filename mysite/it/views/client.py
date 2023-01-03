@@ -16,3 +16,9 @@ class ClientViewSet(viewsets.ModelViewSet):
     # permission_classes = [permissions.IsAuthenticated]
     # permission_classes = [permissions.IsAuthenticated, IsOwner]
     swagger_tag = ["Client"]
+
+    def get_queryset(self):
+        id_user = self.request.query_params.get("id_user")
+        if id_user:
+            return Client.objects.filter(id_user=id_user)
+        return Client.objects.all()
