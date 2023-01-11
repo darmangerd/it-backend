@@ -19,7 +19,6 @@ class FoodViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         food_id = self.request.query_params.getlist("id")
-        print("ICI")
         print(food_id)
         if food_id:
             return Food.objects.filter(id__in=food_id)

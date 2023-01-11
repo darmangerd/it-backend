@@ -16,10 +16,10 @@ class MealViewSet(viewsets.ModelViewSet):
     swagger_tag = ["Meal"]
 
     def get_queryset(self):
-        user_id = self.request.query_params.get("id")
-        date = self.request.query_params.get("date")
-        if user_id and date:
-            return Meal.objects.filter(id_user=user_id, date=date)
-        if user_id:
+        user_id = self.request.query_params.get("id_user")
+        datetime = self.request.query_params.get("date")
+        if user_id is not None and datetime is not None:
+            return Meal.objects.filter(id_user=user_id, date=datetime)
+        if user_id is not None:
             return Meal.objects.filter(id_user=user_id)
         return Meal.objects.all()
