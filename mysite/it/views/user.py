@@ -20,18 +20,26 @@ class UserViewSet(viewsets.ModelViewSet):
 
     queryset = User.objects.all().order_by("-date_joined")
     serializer_class = UserSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
     swagger_tag = ["User"]
 
     # return the pk from the username
     def get_queryset(self):
         username = self.request.query_params.get("username")
-        queryset = User.objects.all()
         if username:
-            queryset = queryset.filter(username=username)
-            # return pk
-            return queryset.values("id", "username")
-        return queryset
+            return User.objects.filter(username=username)
+        return User.objects.all()
+
+    # # return the pk from the username
+    # def get_queryset(self):
+    #     username = self.request.query_params.get("username")
+    #     queryset = User.objects.all()
+
+    #     if username:
+    #         queryset = queryset.filter(username=username)
+    #         # return pk
+    #         return queryset.values("id", "username")
+    #     return queryset
 
     # def list(self, request):
     #     username = request.query_params.get("username")
