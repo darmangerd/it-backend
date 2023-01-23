@@ -18,11 +18,15 @@ class FoodCountViewSet(viewsets.ModelViewSet):
         """
         Get the top 10 food by count
         """
+        id_user = self.request.query_params.get("id_user", None)
         queryset = (
             Quantity.objects.values("id_food__name")
             .annotate(count=Count("id_food__name"))
-            .order_by("-count")[:10]
+            .order_by("-count")
         )
+        if id_user:
+            queryset = queryset.filter(id_meal__id_user=id_user)
+        queryset = queryset[:10]
         food_count = []
         for item in queryset:
             food_count.append(

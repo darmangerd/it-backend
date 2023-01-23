@@ -13,6 +13,7 @@ class MealViewSet(viewsets.ModelViewSet):
     queryset = Meal.objects.all()
     serializer_class = MealSerializer
     permission_classes = [permissions.IsAuthenticated]
+    # permission_classes = [permissions.IsAuthenticated]
     swagger_tag = ["Meal"]
 
     def get_queryset(self):
