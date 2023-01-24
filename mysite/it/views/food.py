@@ -14,10 +14,13 @@ class FoodViewSet(viewsets.ModelViewSet):
     queryset = Food.objects.all()
     serializer_class = FoodSerializer
     permission_classes = [permissions.IsAuthenticated]
-    # permission_classes = [permissions.IsAuthenticated, IsOwner | IsStaffOrReadOnly]
     swagger_tag = ["Food"]
 
     def get_queryset(self):
+        """
+        Get food by id if provided
+        else return all foods
+        """
         food_id = self.request.query_params.getlist("id")
         print(food_id)
         if food_id:

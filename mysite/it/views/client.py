@@ -13,11 +13,13 @@ class ClientViewSet(viewsets.ModelViewSet):
 
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
-    # permission_classes = [permissions.IsAuthenticated]
-    # permission_classes = [permissions.IsAuthenticated, IsOwner]
     swagger_tag = ["Client"]
 
     def get_queryset(self):
+        """
+        Get client by id_user if provided
+        else return all clients
+        """
         id_user = self.request.query_params.get("id_user")
         if id_user:
             return Client.objects.filter(id_user=id_user)

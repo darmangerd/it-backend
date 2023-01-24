@@ -16,7 +16,8 @@ class FoodCountViewSet(viewsets.ModelViewSet):
 
     def get_queryset(self):
         """
-        Get the top 10 food by count
+        Get the 10 most consumed foods by the user
+        if onyl id_user is provided else return all foods count
         """
         id_user = self.request.query_params.get("id_user", None)
         queryset = (

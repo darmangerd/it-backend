@@ -23,41 +23,14 @@ class UserViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.AllowAny]
     swagger_tag = ["User"]
 
-    # return the pk from the username
     def get_queryset(self):
+        """
+        Get the user by username if provided else return all users
+        """
         username = self.request.query_params.get("username")
         if username:
             return User.objects.filter(username=username)
         return User.objects.all()
-
-    # # return the pk from the username
-    # def get_queryset(self):
-    #     username = self.request.query_params.get("username")
-    #     queryset = User.objects.all()
-
-    #     if username:
-    #         queryset = queryset.filter(username=username)
-    #         # return pk
-    #         return queryset.values("id", "username")
-    #     return queryset
-
-    # def list(self, request):
-    #     username = request.query_params.get("username")
-    #     if username:
-    #         queryset = self.queryset.filter(username=username)
-    #     else:
-    #         queryset = self.queryset
-    #     serializer = self.serializer_class(queryset, many=True)
-    #     return Response(serializer.data)
-
-    # def retrieve(self, request, pk=None):
-    #     try:
-    #         user = self.queryset.get(pk=pk)
-    #         serializer = self.serializer_class(user)
-    #         return Response(serializer.data)
-
-    #     except User.DoesNotExist:
-    #         return Response({})
 
 
 class LoginView(KnoxLoginView):
